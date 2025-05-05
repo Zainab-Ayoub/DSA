@@ -3,16 +3,16 @@ using namespace std;
 
 int main() {
     int input[5];
-    int arr[10] = {0}; // initialize all to zero
+    int arr[10] = {0}; 
 
     cout << "Enter 5 numbers:\n";
     for (int i = 0; i < 5; ++i) {
         cin >> input[i];
     }
 
-    int *arrPtr = arr + 1; // start from index 1
-    int evenIndex = 1;     // odd position in array (1, 3, 5, 7, 9)
-    int oddIndex = 2;      // even position in array (2, 4, 6, 8)
+    int *arrPtr = arr + 1; 
+    int evenIndex = 1;     
+    int oddIndex = 2;      
 
     for (int i = 0; i < 5; ++i) {
         if (input[i] % 2 == 0) {
