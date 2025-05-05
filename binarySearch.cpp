@@ -16,7 +16,7 @@ int main(){
             flag = mid;
             cout<<"Value found at index: "<<flag<<endl;
             return 0;
-        } else if(value < x][]){
+        } else if(value < x){
             start = mid + 1;
         } else{
             end = mid - 1;
