@@ -25,7 +25,7 @@ int main(){
 	int choice;
 	
 	do{
-		cout<<"Press 1 to push a value.\nPress 2 to pop a value.\nPress 0 to Exit.\n";
+		cout<<"Press 1 to push a value.\nPress 2 to pop a value.\nPress 3 to Exit.\n";
 		cin>>choice;
 		switch(choice){
 			case 1:
@@ -39,7 +39,7 @@ int main(){
 				cout<<obj.pop();
 				break;
 				
-			case 0:
+			case 3:
 				cout<<"Program Exited Successfully!\n";
 				break;
 				
