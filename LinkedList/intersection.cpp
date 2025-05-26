@@ -11,13 +11,11 @@ struct Node {
 Node* getIntersectionNode(Node* head1, Node* head2) {
     unordered_set<Node*> visited;
 
-    // Store all nodes of list1 in set
     while (head1) {
         visited.insert(head1);
         head1 = head1->next;
     }
 
-    // Traverse list2 and check for any node in set
     while (head2) {
         if (visited.find(head2) != visited.end())
             return head2;
