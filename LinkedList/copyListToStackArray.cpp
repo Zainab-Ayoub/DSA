@@ -11,8 +11,7 @@ void copyToStack(Node* head){
 	int stack[5], i=0;
 	while(head){
 		stack[i] = head->data;
-		cout<<stack[i]<<" ";
-		i++;                                                                                                    
+		cout<<stack[i++]<<" ";                                                                                                   
 		head = head->next;
 	}
 }
