@@ -48,10 +48,25 @@ class DoublyLinkedList{
         }
 
         void printBackward(){
-            Node* temp = head;
+            Node* temp = tail;
             while(temp){
                 cout<<temp->data<<" ";
                 temp = temp->prev;
             } cout<<endl; 
         }
 };
+
+int main(){
+    DoublyLinkedList list;
+
+    list.insertAtBeginning(5);
+    list.insertAtEnd(10);
+    list.insertAtEnd(15);
+    list.insertAtEnd(20);
+
+    cout<<"Forward List: \n";
+    list.printForward();
+
+    cout<<"Backward List: \n";
+    list.printBackward();
+}
