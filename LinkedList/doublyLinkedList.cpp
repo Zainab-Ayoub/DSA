@@ -6,6 +6,27 @@ struct Node{
     Node* prev;
     Node* next;
 
-    Node(int val): data(val), prev(nullptr), next(nullptr) {};
+    Node(int val): data(val), prev(nullptr), next(nullptr) {}
 };
 
+class DoublyLinkedList{
+    private:
+        Node* head;
+        Node* tail;
+    
+    public:
+        DoublyLinkedList(): head(nullptr), tail(nullptr) {}
+
+        void insertAtBeginning(int val){
+            Node* newNode = new Node(val);
+            if(!head){
+                head = tail = newNode;
+            } else{
+                newNode->next = head;
+                head->prev = newNode;
+                head = newNode;
+            }
+        }
+
+        
+};
