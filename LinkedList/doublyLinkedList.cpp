@@ -28,5 +28,30 @@ class DoublyLinkedList{
             }
         }
 
-        
+        void insertAtEnd(int val){
+            Node* newNode = new Node(val);
+            if(!tail){
+                head = tail = newNode;
+            } else{
+                tail->next = newNode;
+                newNode->prev = tail;
+                tail = newNode;
+            }
+        } 
+
+        void printForward(){
+            Node* temp = head;
+            while(temp){
+                cout<<temp->data<<" ";
+                temp = temp->next;
+            } cout<<endl; 
+        }
+
+        void printBackward(){
+            Node* temp = head;
+            while(temp){
+                cout<<temp->data<<" ";
+                temp = temp->prev;
+            } cout<<endl; 
+        }
 };
