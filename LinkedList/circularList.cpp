@@ -7,17 +7,14 @@ struct Node {
 };
 
 int main() {
-    // Create nodes
     Node* head = new Node{1, nullptr};
     Node* second = new Node{2, nullptr};
     Node* third = new Node{3, nullptr};
 
-    // Link them circularly
     head->next = second;
     second->next = third;
-    third->next = head; // Circular link
+    third->next = head; 
 
-    // Traverse and print the list once
     Node* temp = head;
     cout << "Circular Linked List: ";
     do {
@@ -26,7 +23,6 @@ int main() {
     } while (temp != head);
     cout << endl;
 
-    // Free memory (optional but good practice)
     delete head;
     delete second;
     delete third;
