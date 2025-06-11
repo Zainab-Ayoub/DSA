@@ -33,11 +33,11 @@ public:
         Node* newNode = new Node(value);
         if (!head) {
             head = tail = newNode;
-            tail->next = head;  // Circular link
+            tail->next = head;  
         } else {
             tail->next = newNode;
             tail = newNode;
-            tail->next = head;  // Maintain circular link
+            tail->next = head;  
         }
     }
 
