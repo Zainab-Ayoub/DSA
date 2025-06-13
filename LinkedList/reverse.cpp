@@ -83,8 +83,8 @@ public:
     void menu(){
         int choice, value;
         do{
-            cout<<"\tMenu:";
-            cout<<"Press 1 to Insert at End\n";
+            cout<<"Menu:\n";
+            cout<<"Press 1 to Insert a Node\n";
             cout<<"Press 2 to Display List\n";
             cout<<"Press 3 to Display in Reverse\n";
             cout<<"Press 4 to Search a Value\n";
