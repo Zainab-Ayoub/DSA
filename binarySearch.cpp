@@ -1,28 +1,41 @@
 #include<iostream>
 using namespace std;
 
-int main(){
-    int arr[5]= {10, 20, 30, 40, 50}, *ptr, x;
-    int start = 0, end = 4;
-    int flag = -1; 
-    ptr = arr;
-    cout<<"Enter a value you want to search: ";
-    cin>>x;
-    while(start <= end){
-        int mid = (start + end)/2;
-        int value = *(ptr + mid);
+int binarySearch(int* arr, int size, int search){
+    int start = 0, end = size-1;
 
-        if(value == x){
-            flag = mid;
-            cout<<"Value found at index: "<<flag<<endl;
-            return 0;
-        } else if(value < x){
+    while(start <= end){
+        int mid = (start + end) / 2;
+        int value = *(arr + mid);
+
+        if(value == search){
+            return mid;  
+        } else if(value < search){
             start = mid + 1;
         } else{
             end = mid - 1;
         }
     }
-    if(flag == -1){
+    return -1;  
+}
+
+int main() {
+    const int size = 5;
+    int arr[size], search;
+
+    cout<<"Enter "<<size<<" elements in **sorted order**:\n";
+    for(int i=0; i<size; i++){
+        cin>>*(arr + i);
+    }
+
+    cout<<"Enter a value you want to search: ";
+    cin>>search;
+
+    int index = binarySearch(arr, size, search);
+
+    if(index != -1){
+        cout<<"Value found at position: "<<index+1<<endl;
+    } else{
         cout<<"Value not found!"<<endl;
     }
 }
