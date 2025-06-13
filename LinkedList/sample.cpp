@@ -1,50 +1,50 @@
 #include<iostream>
 using namespace std;
 
-struct Node {
+struct Node{
     int data;  
     Node* next; 
 };
 
-class LinkedList {
+class LinkedList{
     Node* head;
 
-public:
-    LinkedList() : head(NULL) {}
+    public:
+        LinkedList() : head(NULL){}
 
-    void insertAtBeginning(int value) {
-        Node* newNode = new Node(); 
-        newNode->data = value;      
-        newNode->next = head;      
-        head = newNode;            
-    }
-
-    void insertAtEnd(int value) {
-        Node* newNode = new Node(); 
-        newNode->data = value;      
-        newNode->next = NULL;       
-
-        if (!head) {
-            head = newNode;
-            return;
+        void insertAtBeginning(int value){
+            Node* newNode = new Node(); 
+            newNode->data = value;      
+            newNode->next = head;      
+            head = newNode;            
         }
 
-        Node* temp = head;
-        while (temp->next) {
-            temp = temp->next;
+        void insertAtEnd(int value){
+            Node* newNode = new Node(); 
+            newNode->data = value;      
+            newNode->next = NULL;       
+
+            if(!head){
+                head = newNode;
+                return;
+            }
+
+            Node* temp = head;
+            while(temp->next){
+                temp = temp->next;
+            }
+
+            temp->next = newNode;
         }
 
-        temp->next = newNode;
-    }
-
-    void display() {
-        Node* temp = head;
-        while (temp != NULL) {
-            cout << temp->data << " -> ";
-            temp = temp->next;
+        void display(){
+            Node* temp = head;
+            while(temp != NULL){
+                cout<<temp->data<<" ";
+                temp = temp->next;
+            }
+            cout<< endl;
         }
-        cout << "NULL" << endl;
-    }
 
 };
 
@@ -56,8 +56,6 @@ int main() {
 
     list1.insertAtBeginning(5);
 
-    cout << "Linked List: ";
+    cout<<"Linked List: ";
     list1.display();
-    
-    return 0;
 } 

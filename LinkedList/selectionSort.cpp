@@ -1,47 +1,74 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
+struct Node{
     int data;
     Node* next;
-    Node(int val) : data(val), next(nullptr) {}
 };
 
-void printList(Node* head) {
-    while (head) {
-        cout << head->data << " ";
-        head = head->next;
+class LinkedList{
+private:
+    Node* head;
+
+public:
+    LinkedList() : head(nullptr){}
+
+    void insertAtEnd(int value){
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = nullptr;
+
+        if(!head){
+            head = newNode;
+            return;
+        }
+
+        Node* temp = head;
+        while(temp->next != nullptr){
+            temp = temp->next;
+        }
+        temp->next = newNode;
     }
-    cout << endl;
-}
-void selectionSort(Node* head) {
-    for (Node* i = head; i != nullptr; i = i->next) {
-        Node* minNode = i;
-        for (Node* j = i->next; j != nullptr; j = j->next) {
-            if (j->data < minNode->data) {
-                minNode = j;
+
+    void display(){
+        Node* temp = head;
+        while(temp != nullptr){
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
+    }
+
+    void selectionSort(){
+        for(Node* i = head; i != nullptr; i = i->next){
+            Node* minNode = i;
+            for(Node* j = i->next; j != nullptr; j = j->next){
+                if(j->data < minNode->data){
+                    minNode = j;
+                }
+            }
+            if(minNode != i){
+                int temp = i->data;
+                i->data = minNode->data;
+                minNode->data = temp;
             }
         }
-        if (minNode != i) {
-            int t = i->data;
-            i->data = minNode->data;
-            minNode->data = t;
-        }
     }
-}
-int main() {
-    Node* head = new Node(4);
-    head->next = new Node(3);
-    head->next->next = new Node(1);
-    head->next->next->next = new Node(2);
+};
 
-    cout << "Original list: ";
-    printList(head);
+int main(){
+    LinkedList list;
 
-    selectionSort(head);
+    list.insertAtEnd(4);
+    list.insertAtEnd(3);
+    list.insertAtEnd(1);
+    list.insertAtEnd(2);
 
-    cout << "Sorted list: ";
-    printList(head);
+    cout<<"Original list: ";
+    list.display();
 
-    return 0;
+    list.selectionSort();
+
+    cout<<"Sorted list: ";
+    list.display();
 }
