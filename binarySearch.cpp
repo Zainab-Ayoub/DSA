@@ -5,7 +5,7 @@ int binarySearch(int* arr, int size, int search){
     int start = 0, end = size-1;
 
     while(start <= end){
-        int mid = (start + end) / 2;
+        int mid = (start + end)/2;
         int value = *(arr + mid);
 
         if(value == search){
@@ -19,7 +19,7 @@ int binarySearch(int* arr, int size, int search){
     return -1;  
 }
 
-int main() {
+int main(){
     const int size = 5;
     int arr[size], search;
 
