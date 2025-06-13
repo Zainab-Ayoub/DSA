@@ -2,34 +2,84 @@
 using namespace std;
 
 struct Node{
-	int data;
-	Node* next;
-	Node(int val): data(val), next(NULL){} 	
-}; 
+    int data;
+    Node* next;
+};
 
-Node* mergeTwoLists(Node* head1, Node* head2){
-	Node* temp = head1;
-	while(temp->next){
-		temp = temp->next;
-	} temp->next = head2;
-	return head1;
-}
+class LinkedList{
+private:
+    Node* head;
+
+public:
+    LinkedList() : head(NULL){}
+
+    void insertAtBeginning(int value){
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = head;
+        head = newNode;
+    }
+
+    void insertAtEnd(int value){
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = NULL;
+
+        if(!head){
+            head = newNode;
+            return;
+        }
+
+        Node* temp = head;
+        while(temp->next != NULL){
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    void merge(LinkedList& other){
+        if(!head){
+            head = other.head;
+            return;
+        }
+
+        Node* temp = head;
+        while(temp->next != NULL){
+            temp = temp->next;
+        }
+        temp->next = other.head;
+    }
+
+    void display(){
+        Node* temp = head;
+        while(temp != NULL){
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        } cout<<endl;
+    }
+};
 
 int main(){
-	Node* head1 = new Node(1);
-	head1->next = new Node(2);
-	head1->next->next = new Node(3);
-	head1->next->next->next = new Node(4);
-	
-	Node* head2 = new Node(11);
-	head2->next = new Node(22);
-	head2->next->next = new Node(33);
-	head2->next->next->next = new Node(44);
-	
-	head1 = mergeTwoLists(head1, head2);
-	
-	while(head1){
-		cout<<head1->data<<" ";
-		head1 = head1->next;
-	}
+    LinkedList list1;
+    list1.insertAtEnd(1);
+    list1.insertAtEnd(2);
+    list1.insertAtEnd(3);
+    list1.insertAtEnd(4);
+
+    LinkedList list2;
+    list2.insertAtEnd(11);
+    list2.insertAtEnd(22);
+    list2.insertAtEnd(33);
+    list2.insertAtEnd(44);
+
+    cout<<"List 1: ";
+    list1.display();
+
+    cout<<"List 2: ";
+    list2.display();
+
+    list1.merge(list2);
+
+    cout<<"Merged List: ";
+    list1.display();
 }

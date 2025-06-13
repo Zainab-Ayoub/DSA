@@ -1,75 +1,72 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
+struct Node{
     int data;
     Node* next;
-    Node(int val) : data(val), next(nullptr) {}
+    Node(int val) : data(val), next(nullptr){}
 };
 
-void reverseCircularList(Node*& head) {
-    if (!head || head->next == head)
+void reverseCircularList(Node*& head){
+    if(!head || head->next == head)
         return;
 
     Node *prev = nullptr, *curr = head, *nextNode = nullptr;
     Node* tail = head;
 
-    do {
+    do{
         tail = tail->next;
-    } while (tail->next != head);
+    } while(tail->next != head);
 
     Node* stop = head;
 
-    do {
+    do{
         nextNode = curr->next;
         curr->next = prev;
         prev = curr;
         curr = nextNode;
-    } while (curr != stop);
+    } while(curr != stop);
 
-    // Connect original head node (now tail) to new head (prev)
     head->next = prev;
     head = prev;
 }
 
-void printCircularList(Node* head) {
-    if (!head) return;
+void printCircularList(Node* head){
+    if(!head) return;
     Node* temp = head;
-    do {
-        cout << temp->data << " ";
+    do{
+        cout<<temp->data<<" ";
         temp = temp->next;
-    } while (temp != head);
-    cout << endl;
+    } while(temp != head);
+    cout<<endl;
 }
 
-void insert(Node*& head, int data) {
+void insert(Node*& head, int data){
     Node* newNode = new Node(data);
-    if (!head) {
+    if(!head){
         newNode->next = newNode;
         head = newNode;
         return;
     }
     Node* temp = head;
-    while (temp->next != head)
+    while(temp->next != head)
         temp = temp->next;
     temp->next = newNode;
     newNode->next = head;
 }
 
-int main() {
+int main(){
     Node* head = nullptr;
     insert(head, 1);
     insert(head, 2);
     insert(head, 3);
     insert(head, 4);
 
-    cout << "Original list: ";
+    cout<<"Original list: ";
     printCircularList(head);
 
     reverseCircularList(head);
 
-    cout << "Reversed list: ";
+    cout<<"Reversed list: ";
     printCircularList(head);
-
-    return 0;
 }

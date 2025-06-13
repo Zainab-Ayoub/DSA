@@ -101,7 +101,7 @@ int main(){
         cin>>choice;
         cin.ignore(); 
 
-        switch (choice) {
+        switch(choice){
             case 1:
                 cout<<endl;
                 cout << "Enter song name: ";
