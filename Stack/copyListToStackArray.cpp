@@ -1,14 +1,14 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
+struct Node{
     int data;
     Node* next;
     
 	Node(int val) : data(val), next(nullptr) {}
 };
 
-class LinkedList {
+class LinkedList{
 private:
     Node* head;
 
@@ -28,7 +28,7 @@ public:
     }
 
     void copyToStack(){
-        int stack[5], i = 0;
+        int stack[5], i=0;
 
         Node* temp = head;
         while(temp){

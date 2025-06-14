@@ -1,45 +1,69 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 struct Node{
-	int data;
-	Node* next;
+    int data;
+    Node* next;
+    Node(int value) : data(value), next(nullptr) {}
 };
 
-Node* createNode(int data){
-	Node* newNode = new Node();
-	newNode->data = data;
-	newNode->next = NULL;
-	
-	return newNode;
-}
+class Stack{
+private:
+    Node* top;
 
-Node* copyStackToList(int arr[], int size){
-	Node* head = NULL;
-	Node* tail = NULL;
-	
-	for(int i=0; i<size; i++){
-		Node* newNode = createNode(arr[i]);
-		if(!head){
-			head=newNode;
-			tail=newNode;
-		} else{
-			tail->next = newNode;
-			tail = newNode; 
-		}
-	}
-	return head;
-}
+public:
+    Stack() : top(nullptr) {}
 
-void printList(Node* head){
-	while(head){
-		cout<<head->data<<" ";
-		head = head->next;
-	}
-}
-int main(){
-	int arr[5] = {1,2,3,4,5};
-	Node* head = copyStackToList(arr, 5);
-	cout<<"Values in List are: \n";
-	printList(head);
+    void push(int value){
+        Node* newNode = new Node(value);
+        newNode->next = top;
+        top = newNode;
+    }
+
+    void pop(){
+        if(isEmpty()){
+            cout<<"Stack Underflow"<<endl;
+            return;
+        }
+        Node* temp = top;
+        top = top->next;
+        delete temp;
+    }
+
+    int topElement(){
+        if(isEmpty()){
+            cout<<"Stack is empty"<<endl;
+            return -1;
+        }
+        return top->data;
+    }
+
+    bool isEmpty(){
+        return top == nullptr;
+    }
+
+    void display(){
+        cout<<"Stack (Top to Bottom): ";
+        Node* temp = top;
+        while(temp){
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
+    }
+};
+
+int main() {
+    Stack s;
+    int arr[5] = {1,2,3,4,5};
+    for(int i=0; i<5; i++)
+        s.push(arr[i]);
+
+    s.display();        
+
+    cout<<"Popped one element"<<endl;
+    s.pop();
+    s.display();
+
+    cout<<"Top element is: "<<s.topElement()<<endl;
 }
