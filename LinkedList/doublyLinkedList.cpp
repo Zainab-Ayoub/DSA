@@ -13,22 +13,12 @@ class DoublyLinkedList{
     private:
         Node* head;
         Node* tail;
+        int count;
     
     public:
-        DoublyLinkedList(): head(nullptr), tail(nullptr) {}
+        DoublyLinkedList(): head(nullptr), tail(nullptr), count(0) {}
 
-        void insertAtBeginning(int val){
-            Node* newNode = new Node(val);
-            if(!head){
-                head = tail = newNode;
-            } else{
-                newNode->next = head;
-                head->prev = newNode;
-                head = newNode;
-            }
-        }
-
-        void insertAtEnd(int val){
+        void insert(int val){
             Node* newNode = new Node(val);
             if(!tail){
                 head = tail = newNode;
@@ -37,6 +27,7 @@ class DoublyLinkedList{
                 newNode->prev = tail;
                 tail = newNode;
             }
+            count++;
         } 
 
         void printForward(){
@@ -54,19 +45,25 @@ class DoublyLinkedList{
                 temp = temp->prev;
             } cout<<endl; 
         }
+
+        void displayCount(){
+            cout<<"Total number of nodes: "<<count<<endl;
+        }
 };
 
 int main(){
     DoublyLinkedList list;
 
-    list.insertAtBeginning(5);
-    list.insertAtEnd(10);
-    list.insertAtEnd(15);
-    list.insertAtEnd(20);
+    list.insert(5);
+    list.insert(10);
+    list.insert(15);
+    list.insert(20);
 
     cout<<"Forward List: \n";
     list.printForward();
 
     cout<<"Backward List: \n";
     list.printBackward();
+
+    list.displayCount();
 }
