@@ -22,11 +22,11 @@ int max(int a, int b) {
 }
 
 Node* createNode(int key) {
-    Node* t = new Node;
-    t->data = key;
-    t->left = t->right = nullptr;
-    t->height = 1;
-    return t;
+    Node* node = new Node;
+    node->data = key;
+    node->left = node->right = nullptr;
+    node->height = 1;
+    return node;
 }
 
 Node* LLRotation(Node* node) {
