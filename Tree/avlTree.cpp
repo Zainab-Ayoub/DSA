@@ -79,17 +79,17 @@ Node* insert(Node* node, int key) {
 
     node->height = max(height(node->left), height(node->right)) + 1;
 
-    if (balanceFactor(node) == 2 && balanceFactor(node->left) == 1)
-        return LLRotation(node);
+    if (balanceFactor(node) > 1 && key < node->left->data)
+    return LLRotation(node);  
 
-    if (balanceFactor(node) == -2 && balanceFactor(node->right) == -1)
-        return RRRotation(node);
+    if (balanceFactor(node) < -1 && key > node->right->data)
+        return RRRotation(node); 
 
-    if (balanceFactor(node) == 2 && balanceFactor(node->left) == -1)
-        return LRRotation(node);
+    if (balanceFactor(node) > 1 && key > node->left->data)
+        return LRRotation(node);  
 
-    if (balanceFactor(node) == -2 && balanceFactor(node->right) == 1)
-        return RLRotation(node);
+    if (balanceFactor(node) < -1 && key < node->right->data)
+        return RLRotation(node);  
 
     return node; 
 }
